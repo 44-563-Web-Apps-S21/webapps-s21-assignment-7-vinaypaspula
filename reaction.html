@@ -21,33 +21,35 @@
     
   <script>
   myTime = undefined;
-  
+
   function recordReact() {
     myTime = Date.now();
     console.log("Time : " + myTime);
   }
 
   function startTime() {
-    console.log(countdown);
-    for (var i = 0; i < 3; i++) {
-      setTimeout(function (i) {
-        document.getElementById("countdown").innerHTML = i
-      }, (((3 - 1) - i) * 1000), i);
+    var countd=Math.floor(Math.random()*(10-2)+2)
+      for(let i=0;i<countd+1;i++){
+        var j=(countd-i)*1000;
+        var p=i;
+        setTimeout(() => {
+          document.getElementById("countdown").innerHTML = i;
+        }, j)
+      }
 
+      setTimeout(() => {
+        if(myTime == undefined){
+          document.getElementById("target").innerHTML = "Too Slow";
+        }
+        
+        else{
+          var buttonTime = Date.now();
+          var diff=buttonTime-myTime;
+          document.getElementById("target").innerHTML = "Time was "+diff+" ms"
+          myTime=undefined
+        }
+      }, countd*1000)
     }
-
-    setTimeout(function (i) {
-      console.log(i)
-      if (myTime == undefined) {
-        document.getElementById("target").innerHTML = "Too Slow"
-      }
-      else {
-        var buttonTime = Date.now();
-        var elapsedTime = buttonTime - myTime;
-        document.getElementById("target").innerHTML = "Time was " + elapsedTime;
-      }
-    }, (3 - 1)*1000)
-  }
   </script>
 
 </body>

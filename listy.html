@@ -31,23 +31,20 @@
 
 	<input id="listname" type="text"></input>
 
-
-
 		<div class="flex-container" id="target">
 		  <div class="listy">row item 1</div>   
 		  <div class="listy">row item 2</div>  
 		  <div class="listy">row item 3</div>  
 		</div>
 	
-	<p> Press the button to create an new element of type div and then add it to the container.
-		</p>
+	<p> Press the button to create an new element of type div and then add it to the container.</p>
 		<button onclick="makeNewDiv()">Add one</button>
 	
 	
 </body>
 <script>
 	function makeNewDiv(){
-		/* make the div and its text */
+
 		let element = document.createElement("div")
 		element.innerHTML = document.getElementById("listname").value
 		element.className = "listy"
@@ -66,11 +63,11 @@
                 }
             }
             if (r == 0) {
-                listyItems[0].remove();
+				var rand=Math.floor(Math.random()*(listyItems.length-0)+0)
+                listyItems[rand].remove();
             }
         }
 
-		/* add it to the container */
 		document.getElementById('target').appendChild(element)
 		
 	}
