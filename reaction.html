@@ -16,39 +16,36 @@
   <div id="target">Your time</div>
   <div id="countdown">Count</div>
   
-  <button type="button" class="btn btn-primary">Start Timer</button>
+  <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
   <button type="button" class="btn btn-danger" onclick="recordReact()">React Now</button>
-
-
-  <button type="button"
-  class="btn btn-primary"
-  onclick="buttonPress2()">
-  Click me change the color.</button>
-  
-  <p id="target">I will become red </p>
-  
-  <script> 
-
-  var myTime=undefined;
-
-  function recordReact(){
+    
+  <script>
+  myTime = undefined;
+  function recordReact() {
     myTime = Date.now();
     console.log("Time : " + myTime);
   }
 
+  function startTime() {
+    console.log(countdown);
+    for (var i = 0; i < 3; i++) {
+      setTimeout(function (i) {
+        document.getElementById("countdown").innerHTML = i
+      }, (((3 - 1) - i) * 1000), i);
 
+    }
 
-
-  function buttonPress1() {
-    setTimeout(function(){
-      document.getElementById('target').style.color = "red"
-    }, 3000)
-  }
-
-  function buttonPress2() {
-    setTimeout(()=>{
-      document.getElementById('target').style.color = "red"
-    }, 3000)
+    setTimeout(function (i) {
+      console.log(i)
+      if (myTime == undefined) {
+        document.getElementById("target").innerHTML = "Too Slow"
+      }
+      else {
+        var buttonTime = Date.now();
+        var elapsedTime = buttonTime - myTime;
+        document.getElementById("target").innerHTML = "Time was " + elapsedTime;
+      }
+    }, (3 - 1)*1000)
   }
   </script>
 

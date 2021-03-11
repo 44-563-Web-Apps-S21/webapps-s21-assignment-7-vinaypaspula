@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html> <head> 
+
+	<title>Listy webpage</title>
+	
+	<style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style></head>
+
+
+
+<body>
+
+	<h1>Vinay Kumar Paspula builds a list</h1>
+
+	<input id="listname" type="text"></input>
+
+
+
+		<div class="flex-container" id="target">
+		  <div class="listy">row item 1</div>   
+		  <div class="listy">row item 2</div>  
+		  <div class="listy">row item 3</div>  
+		</div>
+	
+	<p> Press the button to create an new element of type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add one</button>
+	
+	
+</body>
+<script>
+	function makeNewDiv(){
+		/* make the div and its text */
+		let element = document.createElement("div")
+		element.innerHTML = document.getElementById("listname").value
+		element.className = "listy"
+
+		var listyItems = document.getElementsByClassName("listy");
+
+		var r = 0;
+
+		if (listyItems.length > 8) {
+            for (var k = 0; k < 8; k++) {
+                if (listyItems[k].innerHTML == element.innerHTML) {
+                    listyItems[k].remove();
+                    console.log("We are removing duplicates");
+                    r = 1;
+                    break;
+                }
+            }
+            if (r == 0) {
+                listyItems[0].remove();
+            }
+        }
+
+		/* add it to the container */
+		document.getElementById('target').appendChild(element)
+		
+	}
+</script>
+</html>	
