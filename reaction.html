@@ -28,6 +28,8 @@
   }
 
   function startTime() {
+    myTime = undefined
+    buttonTime = Date.now()
     var countd=Math.floor(Math.random()*(10-2)+2)
       for(let i=0;i<countd+1;i++){
         var j=(countd-i)*1000;
@@ -43,10 +45,8 @@
         }
         
         else{
-          var buttonTime = Date.now();
-          var diff=buttonTime-myTime;
-          document.getElementById("target").innerHTML = "Time was "+diff+" ms"
-          myTime=undefined
+          var elapsedTime = (-1) * (buttonTime - myTime);
+          document.getElementById("target").innerHTML = "Time was "+elapsedTime+" ms";
         }
       }, countd*1000)
     }
